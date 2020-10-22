@@ -6,7 +6,7 @@
  * @version 1.0
  * @since 0.1
  */
-class UrlAmigavelController extends MainController
+class UrlAmigavel extends DataBase
 {
 
 	/**
@@ -14,21 +14,26 @@ class UrlAmigavelController extends MainController
 	* 
 	*/
     public function index() {
-		// Título da página
-		$this->title = 'URL Amigável';
-		
-		
-		
+				
 		/** Carrega os arquivos do view **/
 	
 		require PATH .'/views/tema/header.php';
        	
-        require PATH .'/views/tema/menu.php';
+        require PATH .'/views/tema/nav.php';
+        require PATH .'/views/tema/msg.php';
 			
-        require PATH .'/views/urlAmigavel/index.php';
+        require PATH .'/views/url_amigavel/index.php';
 			
         require PATH .'/views/tema/footer.php';
 		
     } // index
+
+    public function teste(){
+        echo "Teste";
+    }
+
+    public function teste_par($val){
+        echo $val;
+    }
 	
 } // class UrlAmigavel

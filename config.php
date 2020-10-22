@@ -10,7 +10,7 @@ define( 'PATH', dirname( __FILE__ ) );
 define( 'UP_PATH', PATH . '/uploads' );
 
 // URL da home
-define( 'HOME_URI', 'http://127.0.0.1/poo2020-1/' );
+define( 'HOME_URI', 'http://127.0.0.1/poo2020/' );
 
 /**INFORMAÇÕES PARA CONEXAO COM O BANCO DE DADOS */
 // SGBD em uso
@@ -21,7 +21,7 @@ define( 'HOSTNAME', 'localhost' );
 
 // Nome do DB
 //define( 'DB_NAME', 'mvc' );
-define( 'DBNAME', 'escola' );
+define( 'DBNAME', 'news' );
 // Usuário do DB
 define( 'DBUSER', 'root' );
 

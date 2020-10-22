@@ -1,47 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="<?php echo HOME_URI;?>views/css/style.css" />
-	<title>Criação de Sites</title>
-</head>
-<body>
-	<header>
-		<div id="h-logo"><img src="<?php echo HOME_URI ?>/views/images/logo.png" style="height:75px"/></div>
-		<div id='h-center'><p>Programação Orientada a Objetos com PHP</p></div>
-		<div id='h-user'>
-			
-		</div>
-    </header>
-    <div id="msg">
-    
 <?php
-	if(isset($_SESSION['msg'])){
-		foreach($_SESSION['msg'] AS $msg){
-			echo "<div  class='msg alert alert-".$msg['class']."' role='alert'>"
-			.$msg['msg'].
-			"
-		  </div>";
-		}
-		unset($_SESSION['msg']);
-		echo "<script>$('.msg').hide(3000);</script>";
-	}
+    include PATH."/views/tema/header.php";
+    include PATH."/views/tema/nav.php";
+    include PATH."/views/tema/msg.php";
+    
+
 ?>
-    </div>
-    <nav class="clearfix">
-        <ul>
-            <li><a href="<?php echo HOME_URI;?>">Início</a></li>
-            <li><a href="<?php echo HOME_URI;?>urlAmigavel/">URL Amigável</a></li>
-            <li><a href="<?php echo HOME_URI;?>contato/">Contato</a></li>
-            <li><a href="<?php echo HOME_URI;?>usuario/">Usuário</a></li>
-            <li><a href="<?php echo HOME_URI;?>noticias/">Notícias</a></li>
-            
-        </ul>
-    </nav>
+
+    
     <main>
         <div class="wrap">
             <h1>Programação Orientada a Objetos com PHP</h1>
@@ -63,11 +28,5 @@
         </div> 
 
     </main>
-    <footer>
-	<p>Escola Técnica Estadual Monteiro Lobato</p>
-	<p> Curso Técnico em Informática </p>
-	<p>Disciplina de Criação de Sites</p>
-	<p>Professor Cândido Farias</p>
-    </footer>
-</body>
-</html>
+    <?php
+    include PATH."/views/tema/footer.php";
