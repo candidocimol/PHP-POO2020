@@ -167,6 +167,8 @@ class Usuario extends DataBase{
         $where=['id'=>1];
         return $this->select("usuario",$colunas,$where);
     }
-
     
+    public function login(){
+        $this->select("usuario", ["email","nome"]);
+    }
 }
