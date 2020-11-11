@@ -26,19 +26,7 @@ class Usuario extends DataBase{
     private $senha;
 
     
-    /** Metodo construtor 
-     * @param  int $id
-     * @param string $nome
-     * @param string $email
-     * @param string $senha
-    */
-    public function __construct($id, $nome, $email, $senha){
-        parent::__construct();
-        $this->setId($id);
-        $this->setNome($nome);
-        $this->setEmail($email);
-        $this->setSenha($senha);
-    }
+    
     /**
      * Método mágico que retorna uma descrição da classe 
      * quando houver tentativa de acewssar o objeto como string
@@ -147,6 +135,17 @@ class Usuario extends DataBase{
         return $this->senha;
     }
 
+    public function index(){
+        if(isset($_SESSION['user'])){
+            if($_SESSION['user']['perfil']=="admin"){
+                $this->listar();
+            }else{
+                header("location:".HOME_URI);
+            }
+        }else{
+            header("location:".HOME_URI);
+        }
+    }
     
     public function listar(){
         $resultado= $this->query("SELECT * FROM usuario");
@@ -156,19 +155,53 @@ class Usuario extends DataBase{
 			// Retorna a consulta
 			While($item=$resultado->fetch(PDO::FETCH_ASSOC)){
 				$usuarios[]=$item;
-			}
+            }
+            var_dump($usuarios);
 			return $usuarios;
 		}
 		return null;
     }
+
 
     public function listarMax(){
         $colunas=['nome','email'];
         $where=['id'=>1];
         return $this->select("usuario",$colunas,$where);
     }
-    
+    /**
+     * Método de Login
+     */
     public function login(){
-        $this->select("usuario", ["email","nome"]);
+        require PATH .'/views/tema/header.php';
+       				
+        require PATH .'/views/paginas/usuarios/login.php';
+			
+        require PATH .'/views/tema/footer.php';
+    }
+
+    /**
+     * Método para autenticação de Usuário
+     */
+    public function autenticar(){
+        $cols=['nome','email','perfil'];
+        $where=['email'=>$_POST['email'], 'senha'=>md5($_POST['senha'])];
+        $resultado=$this->select("usuario",$cols ,$where);
+        if($resultado){
+            $_SESSION['user']=$resultado[0];
+            echo "Sucesso!";
+        }else{
+            echo "Usuário não encontrado!";
+        }
+
+        header("location:".HOME_URI);
+    }
+
+    /**
+     * Método Logout
+     * 
+     */
+    public function logout(){
+        unset($_SESSION['user']);
+        header("location:".HOME_URI);
     }
 }

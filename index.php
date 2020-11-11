@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "config.php";
 
 /*Função para realizar o carregamento automático das classes */

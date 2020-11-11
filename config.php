@@ -1,4 +1,4 @@
-,<?php
+<?php
 /**
  * Configuração geral
  */
@@ -26,6 +26,6 @@ define( 'DBNAME', 'news' );
 define( 'DBUSER', 'root' );
 
 // Senha do DB
-define( 'DBPASSWORD', 'vertrigo' );
+define( 'DBPASSWORD', '' );
 // Charset da conexão PDO
 define( 'DBCHARSET', 'utf8' );

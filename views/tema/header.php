@@ -15,6 +15,14 @@
 		<div id="h-logo"><img src="<?php echo HOME_URI ?>/views/images/logo.png" style="height:75px"/></div>
 		<div id='h-center'><p>Programação Orientada a Objetos com PHP</p></div>
 		<div id='h-user'>
-			
+			<?php
+				if(isset($_SESSION['user'])){
+					echo "<p>".$_SESSION['user']['nome']." 
+					     <a href='".HOME_URI."/usuario/logout'>Logout</a>
+					</p>";
+				}else{
+					echo "<a href='".HOME_URI."/usuario/login'>Login</a>";
+				}
+			?>
 		</div>
     </header>

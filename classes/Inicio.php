@@ -9,7 +9,7 @@
 class Inicio extends DataBase{
     
     public function index(){
-        include PATH."/views/inicio.php";
+        include PATH."/views/paginas/inicio.php";
     }
     
 

@@ -88,7 +88,7 @@ class DataBase
 			}
 			//Remove aultima virgula
 			$sql=substr($sql,0,-1);
-            $sql=substr($sql,0,-1);
+           
 
             $sql.=" FROM ".$table;
         }else{

@@ -22,7 +22,7 @@ class UrlAmigavel extends DataBase
         require PATH .'/views/tema/nav.php';
         require PATH .'/views/tema/msg.php';
 			
-        require PATH .'/views/url_amigavel/index.php';
+        require PATH .'/views/paginas/url_amigavel/index.php';
 			
         require PATH .'/views/tema/footer.php';
 		
