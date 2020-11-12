@@ -8,13 +8,13 @@
     if(isset($usuarios)){
         foreach($usuarios AS $usuario){
             echo "<tr>
-                    <td>".$usuario->id."</td>
-                    <td>".$usuario->nome."</td>
-                    <td>".$usuario->email."</td>
+                    <td>".$usuario['id']."</td>
+                    <td>".$usuario['nome']."</td>
+                    <td>".$usuario['email']."</td>
                     <td>
-                        <a href='".HOME_URI."/usuario/editar/".$usuario->id."'><i class='glyphicon glyphicon-edit' title='Editar usuário' ></i></a>
-                        <a href='".HOME_URI."/usuario/excluir/".$usuario->id."'><i class='glyphicon glyphicon-trash' title='Excluir usuário'></i></a>
-                        <a href='".HOME_URI."/usuario/enviaremail/".$usuario->id."'><i class='glyphicon glyphicon-envelope' title='Enviar email'></i></a>
+                        <a href='".HOME_URI."/usuario/editar/".$usuario['id']."'>Editar</a>
+                        <a href='".HOME_URI."/usuario/excluir/".$usuario['id']."'>Excluir</a>
+                        
                     
                     </td>
                 </tr>";

@@ -135,6 +135,7 @@ class DataBase
 	 * @return object|bool Retorna a consulta ou falso
 	 */
 	public function insert($table, $data ) {
+		
 		// Configura o array de colunas
 		$cols = array();
 		
@@ -147,6 +148,7 @@ class DataBase
 		// O $j  assegura que colunas serão configuradas apenas uma vez
 		$j = 0;
 		
+		//var_dump($data);
 		
 		// É preciso enviar pelo menos um array de chaves e valores
 		if(!isset( $data[0] ) || !is_array($data[0]) ) {

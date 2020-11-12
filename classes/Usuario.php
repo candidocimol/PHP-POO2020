@@ -149,17 +149,53 @@ class Usuario extends DataBase{
     
     public function listar(){
         $resultado= $this->query("SELECT * FROM usuario");
-     
+        $usuarios=null;
         if($resultado->rowCount() > 0){
-			$usuarios=null;
+			
 			// Retorna a consulta
 			While($item=$resultado->fetch(PDO::FETCH_ASSOC)){
 				$usuarios[]=$item;
             }
-            var_dump($usuarios);
-			return $usuarios;
+            
 		}
-		return null;
+		require PATH .'/views/tema/header.php';
+        require PATH .'/views/tema/nav.php';
+        require PATH .'/views/tema/msg.php';			
+        require PATH .'/views/paginas/usuarios/listar.php';
+		require PATH .'/views/tema/footer.php';
+    }
+
+
+    public function criar(){
+        require PATH .'/views/tema/header.php';
+        require PATH .'/views/tema/nav.php';			
+        require PATH .'/views/paginas/usuarios/form_usuario.php';
+		require PATH .'/views/tema/footer.php';
+    }
+
+
+    public function salvar(){
+        if(isset($_POST['nome']) AND isset($_POST['email']) AND isset($_POST['enviar']) ){
+            if(!empty($_POST['nome']) AND !empty($_POST['email'])){
+                $colunas[]=array('nome'=>$_POST['nome'],'email'=>$_POST['email'],'senha'=>md5(DEFAULT_PASS) );
+               
+                if($this->insert('usuario',$colunas)){
+                    $msg['msg']="Sucesso!";
+                    $msg['class']="success";
+                }else{
+                    $msg['msg']="Falha";
+                    $msg['class']="danger";
+                }
+                $_SESSION['msg'][]=$msg;
+            }
+
+        }else{
+            $msg['msg']="Falha";
+            $msg['class']="Valores não encontrados";
+        }
+
+        header("Location:".HOME_URI."usuario/");
+
     }
 
 
@@ -188,6 +224,12 @@ class Usuario extends DataBase{
         $resultado=$this->select("usuario",$cols ,$where);
         if($resultado){
             $_SESSION['user']=$resultado[0];
+            if($_POST['senha']==DEFAULT_PASS){
+               //Redireciona para a página de alteração de senha
+                //$this->alterarSenha();
+                //header("location:".HOME_URI."usuario/alterarSenha/");
+            }
+           
             echo "Sucesso!";
         }else{
             echo "Usuário não encontrado!";
@@ -203,5 +245,13 @@ class Usuario extends DataBase{
     public function logout(){
         unset($_SESSION['user']);
         header("location:".HOME_URI);
+    }
+
+    public alterarSenha(){
+
+    }
+
+    public salvarSenha(){
+
     }
 }

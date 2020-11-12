@@ -12,6 +12,11 @@ define( 'UP_PATH', PATH . '/uploads' );
 // URL da home
 define( 'HOME_URI', 'http://127.0.0.1/poo2020/' );
 
+
+
+
+
+
 /**INFORMAÇÕES PARA CONEXAO COM O BANCO DE DADOS */
 // SGBD em uso
 define( 'SGBD', 'mysql' );
@@ -29,3 +34,5 @@ define( 'DBUSER', 'root' );
 define( 'DBPASSWORD', '' );
 // Charset da conexão PDO
 define( 'DBCHARSET', 'utf8' );
+
+define('DEFAULT_PASS', '12345');
